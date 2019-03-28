@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<body>
+
+<div layout:fragment="content">
+    <div th:include="menuFragment" ></div>
+    <br/><br/>
+    <form action="UpdateStudent" method="POST">
+        <table>
+            <tr><td>Nowe imie:</td><td><input type="text" name="newStudentName" th:value="${student.name}" /></td></tr>
+            <tr><td>Nowe nazwisko:</td><td><input type="text" name="newStudentSurname" th:value="${student.surname}" /></td></tr>
+            <tr><td>Nowy PESEL:</td><td><input type="text" name="newStudentPesel" th:value="${student.pesel}" /></td></tr>
+            <tr><td>Nowa klasa:</td><td><select class="form-control" name="newStudentSchoolClass"
+                                           id="newStudentSchoolClass">
+                <option value="-1">---</option>
+                <option th:each="schoolClass: ${schoolClasses}" th:value="${schoolClass.id}"
+                        th:text="${schoolClass.profile} + ', rocznik: ' + ${schoolClass.startYear}">
+                </option></select></td></tr>
+        </table><br/><BR/>
+
+        <input type="hidden" name="studentId" th:value="${studentId}" />
+        <input type="submit" value="Zapisz"/>
+    </form>
+</div>
+
+</body>
+</html>
+
+

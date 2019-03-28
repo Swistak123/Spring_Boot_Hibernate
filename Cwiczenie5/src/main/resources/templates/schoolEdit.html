@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<body>
+
+<div layout:fragment="content">
+    <div th:include="menuFragment" ></div>
+    <br/><br/>
+    <form action="UpdateSchool" method="POST">
+        <table>
+            <tr><td>nowa nazwa:</td><td><input type="text" name="newSchoolName" th:value="${school.name}" /></td></tr>
+            <tr><td>nowy adres:</td><td><input type="text" name="newSchoolAddress" th:value="${school.address}"/></td></tr>
+        </table><br/><BR/>
+        <input type="hidden" name="schoolId" th:value="${schoolId}" />
+        <input type="submit" value="Zapisz"/>
+    </form>
+</div>
+
+</body>
+</html>
+
